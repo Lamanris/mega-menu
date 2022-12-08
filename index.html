@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WorkTruck</title>
+
+    <!--Бутстрап стили, задействован контейнер-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!--Бутстрап стили, задействован контейнер-->
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header-wrap">
+            <a href="#" class="header-logo"><img src="img/logo.svg" alt="Logo"></a>
+            <button type="button" class="header-btn-catalog" id="catalog-menu-trigger">
+                <img src="img/catalog-icon.svg" alt="Icon">
+                <span>Каталог</span>
+            </button>
+            <div class="header-right">
+                <button type="button" class="header-search__btn-mobile" id="header-search-trigger-mobile">
+                    <img src="img/search-icon-black.svg" alt="Search">
+                </button>
+                <div class="header-search" id="header-search">
+                    <input placeholder="Введите артикул запчасти" class="header-search__input" type="text" id="header-search-input">
+                    <button type="button" class="header-search__btn" id="header-search-trigger">
+                        <img src="img/search-icon.svg" alt="Search">
+                    </button>
+                    <div id="header-search-modal" class="header-search-modal">
+                        <div class="header-search-modal__loader" id="header-search-modal__loader">
+                            <div class="lds-facebook"><div></div><div></div><div></div></div>
+                        </div>
+                        <ul class="header-search-modal__results" id="header-search-modal__results"></ul>
+                    </div>
+                </div>
+                <a href="tel:89005412455" class="header-phone header-link">
+                    <img src="img/phone-icon.svg" alt="Phone">
+                    <span >8 900 541-24-55</span>
+                </a>
+                <a href="#" class="header-login header-link">
+                    <img src="img/login-icon.svg" alt="Login">
+                    <span>Войти</span>
+                </a>
+                <button id="cd-cart-trigger" type="button" class="header-btn-cart header-link">
+                    <img src="img/cart-icon.svg" alt="Cart">
+                    <span>Корзина</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--Это можно убрать-->
+<style>
+    .cd-container {
+        /* this class is used to horizontally align the gallery of items */
+        position: relative;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .cd-container::after {
+        /* clearfix */
+        content: '';
+        display: table;
+        clear: both;
+    }
+    main {
+        position: relative;
+        min-height: 100%;
+        background: #eeeff7;
+        padding-top: 120px;
+        z-index: 1;
+    }
+    #cd-gallery-items {
+        list-style: none;
+    }
+    #cd-gallery-items li {
+        margin-bottom: 1.5em;
+    }
+    #cd-gallery-items li img {
+        width: 100%;
+        display: block;
+        border-radius: 0.25em;
+    }
+    @media only screen and (min-width: 768px) {
+        #cd-gallery-items li {
+            width: 48%;
+            float: left;
+            margin-bottom: 2em;
+            margin-right: 4%;
+        }
+        #cd-gallery-items li:nth-child(2n) {
+            margin-right: 0;
+        }
+    }
+    @media only screen and (min-width: 1200px) {
+        #cd-gallery-items li {
+            width: 31%;
+            float: left;
+            margin-bottom: 2.5em;
+            margin-right: 3.5%;
+        }
+        #cd-gallery-items li:nth-child(2n) {
+            margin-right: 3.5%;
+        }
+        #cd-gallery-items li:nth-child(3n) {
+            margin-right: 0;
+        }
+    }
+</style>
+<main>
+    <ul id="cd-gallery-items" class="cd-container">
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+        <li>
+            <img src="img/thumb.jpg" alt="Preview image">
+        </li>
+    </ul>
+</main>
+<!--Это можно убрать-->
+
+
+<div id="cd-shadow-layer"></div>
+<div id="cd-cart">
+    <h2>Cart</h2>
+    <ul class="cd-cart-items">
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">2x</span> Product Name
+            <div class="cd-price">$19.98</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">2x</span> Product Name
+            <div class="cd-price">$19.98</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+        <li>
+            <span class="cd-qty">1x</span> Product Name
+            <div class="cd-price">$9.99</div>
+            <a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+        </li>
+    </ul>
+
+    <div class="cd-cart-total">
+        <p>Total <span>$39.96</span></p>
+    </div>
+
+    <a href="#0" class="checkout-btn">Checkout</a>
+
+    <p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
+</div>
+<nav id="catalog-menu">
+    <button id="catalog-menu-close">
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='#191919'><path fill-rule='evenodd' d='M16.704 15.658l4.393-4.393a.734.734 0 0 0 0-1.046.734.734 0 0 0-1.046 0l-4.393 4.393-4.393-4.393a.734.734 0 0 0-1.046 0 .734.734 0 0 0 0 1.046l4.393 4.393-4.393 4.393a.734.734 0 0 0 0 1.046c.142.141.33.217.519.217a.736.736 0 0 0 .518-.217l4.393-4.393 4.392 4.393c.142.141.33.217.519.217a.736.736 0 0 0 .518-.217.734.734 0 0 0 0-1.046l-4.374-4.393z'/></svg>
+    </button>
+    <div id="catalog-menu-body">
+        <div class="catalog-menu__panel catalog-menu__panel--main catalog-menu__panel--active">
+            <ul class="catalog-menu__list">
+                <li class="catalog-menu__item catalog-menu__item--bold" data-hasPanel="true">
+                    <a href="#">РАСПРОДАЖА - подменю</a>
+                    <div class="catalog-menu__panel">
+                        <div class="catalog-menu__subheader" style="background-color: #80013E; color: #00FFC2">
+                            <button class="catalog-menu-back">
+                                <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 16H8" stroke="#fff" stroke-width="2" stroke-linecap="round"></path><path d="M8.707 16.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 1 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#fff"></path><path d="M13.293 22.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 0 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#fff"></path></svg>
+                            </button>
+                            <div class="catalog-menu__subheader-wrap">
+                                <p class="catalog-menu__subheader-title" data-cerberus="mainmenu-title">РАСПРОДАЖА</p>
+                                <a href="#" class="catalog-menu__subheader-link">
+                                    <span> Смотреть все товары</span>
+                                    <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16h16" stroke="#00FFC2" stroke-width="2" stroke-linecap="round"></path><path d="M23.293 16.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 1 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#00FFC2"></path><path d="M18.707 22.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 0 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#00FFC2"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <ul class="catalog-menu__list">
+                            <li class="catalog-menu__item">
+                                <a href="#">РАСПРОДАЖА - ссылка</a>
+                            </li>
+                            <li class="catalog-menu__item" data-hasPanel="true">
+                                <a href="#">Акции - подменю</a>
+                                <div class="catalog-menu__panel">
+                                    <div class="catalog-menu__subheader" style="background-color: #80013E; color: #00FFC2">
+                                        <button class="catalog-menu-back">
+                                            <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 16H8" stroke="#fff" stroke-width="2" stroke-linecap="round"></path><path d="M8.707 16.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 1 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#fff"></path><path d="M13.293 22.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 0 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#fff"></path></svg>
+                                        </button>
+                                        <div class="catalog-menu__subheader-wrap">
+                                            <p class="catalog-menu__subheader-title" data-cerberus="mainmenu-title">Акции</p>
+                                            <a href="#" class="catalog-menu__subheader-link">
+                                                <span> Смотреть все акции</span>
+                                                <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16h16" stroke="#00FFC2" stroke-width="2" stroke-linecap="round"></path><path d="M23.293 16.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 1 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#00FFC2"></path><path d="M18.707 22.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 0 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#00FFC2"></path></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <ul class="catalog-menu__list">
+                                        <li class="catalog-menu__item">
+                                            <a href="#">Купить акции - ссылка</a>
+                                        </li>
+                                        <li class="catalog-menu__item" data-hasPanel="true">
+                                            <a href="#">Акции - подменю</a>
+                                            <div class="catalog-menu__panel">
+                                                <div class="catalog-menu__subheader" style="background-color: #80013E; color: #00FFC2">
+                                                    <button class="catalog-menu-back">
+                                                        <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 16H8" stroke="#fff" stroke-width="2" stroke-linecap="round"></path><path d="M8.707 16.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 1 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#fff"></path><path d="M13.293 22.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 0 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#fff"></path></svg>
+                                                    </button>
+                                                    <div class="catalog-menu__subheader-wrap">
+                                                        <p class="catalog-menu__subheader-title" data-cerberus="mainmenu-title">Акции</p>
+                                                        <a href="#" class="catalog-menu__subheader-link">
+                                                            <span> Смотреть все акции</span>
+                                                            <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16h16" stroke="#00FFC2" stroke-width="2" stroke-linecap="round"></path><path d="M23.293 16.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 1 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#00FFC2"></path><path d="M18.707 22.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 0 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#00FFC2"></path></svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <ul class="catalog-menu__list">
+                                                    <li class="catalog-menu__item">
+                                                        <a href="#">Купить акции - ссылка</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="catalog-menu__item" data-hasPanel="true">
+                                <a href="#">Призы - подменю</a>
+                                <div class="catalog-menu__panel">
+                                    <div class="catalog-menu__subheader" style="background-color: #80013E; color: #00FFC2">
+                                        <button class="catalog-menu-back">
+                                            <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 16H8" stroke="#fff" stroke-width="2" stroke-linecap="round"></path><path d="M8.707 16.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 1 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#fff"></path><path d="M13.293 22.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 0 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#fff"></path></svg>
+                                        </button>
+                                        <div class="catalog-menu__subheader-wrap">
+                                            <p class="catalog-menu__subheader-title" data-cerberus="mainmenu-title">Призы</p>
+                                            <a href="#" class="catalog-menu__subheader-link">
+                                                <span> Смотреть все акции</span>
+                                                <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16h16" stroke="#00FFC2" stroke-width="2" stroke-linecap="round"></path><path d="M23.293 16.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 1 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#00FFC2"></path><path d="M18.707 22.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 0 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#00FFC2"></path></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <ul class="catalog-menu__list">
+                                        <li class="catalog-menu__item">
+                                            <a href="#">Просто ссылка</a>
+                                        </li>
+                                        <li class="catalog-menu__item" data-hasPanel="true">
+                                            <a href="#">Ещё одно подменю</a>
+                                            <div class="catalog-menu__panel">
+                                                <div class="catalog-menu__subheader" style="background-color: #80013E; color: #00FFC2">
+                                                    <button class="catalog-menu-back">
+                                                        <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 16H8" stroke="#fff" stroke-width="2" stroke-linecap="round"></path><path d="M8.707 16.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 1 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#fff"></path><path d="M13.293 22.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 0 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#fff"></path></svg>
+                                                    </button>
+                                                    <div class="catalog-menu__subheader-wrap">
+                                                        <p class="catalog-menu__subheader-title" data-cerberus="mainmenu-title">Призы</p>
+                                                        <a href="#" class="catalog-menu__subheader-link">
+                                                            <span> Смотреть все акции</span>
+                                                            <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16h16" stroke="#00FFC2" stroke-width="2" stroke-linecap="round"></path><path d="M23.293 16.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 1 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#00FFC2"></path><path d="M18.707 22.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 0 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#00FFC2"></path></svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <ul class="catalog-menu__list">
+                                                    <li class="catalog-menu__item">
+                                                        <a href="#">Просто ссылка</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="catalog-menu__item catalog-menu__item--bold" data-hasPanel="true">
+                    <a href="#">Новогодний декор - подменю</a>
+                    <div class="catalog-menu__panel">
+                        <div class="catalog-menu__subheader" style="background-color: #80013E; color: #00FFC2">
+                            <button class="catalog-menu-back">
+                                <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 16H8" stroke="#fff" stroke-width="2" stroke-linecap="round"></path><path d="M8.707 16.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 1 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#fff"></path><path d="M13.293 22.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 0 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#fff"></path></svg>
+                            </button>
+                            <div class="catalog-menu__subheader-wrap">
+                                <p class="catalog-menu__subheader-title" data-cerberus="mainmenu-title">Новогодний декор</p>
+                                <a href="#" class="catalog-menu__subheader-link">
+                                    <span> Смотреть все товары</span>
+                                    <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16h16" stroke="#00FFC2" stroke-width="2" stroke-linecap="round"></path><path d="M23.293 16.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 1 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#00FFC2"></path><path d="M18.707 22.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 0 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#00FFC2"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <ul class="catalog-menu__list">
+                            <li class="catalog-menu__item">
+                                <a href="#">Новогодний декор</a>
+                                <a href="#">Новогодний декор</a>
+                                <a href="#">Новогодний декор</a>
+                                <a href="#">Новогодний декор</a>
+                            </li>
+                            <li class="catalog-menu__item" data-hasPanel="true">
+                                <a href="#">Ёлки - подменю</a>
+                                <div class="catalog-menu__panel">
+                                    <div class="catalog-menu__subheader" style="background-color: #80013E; color: #00FFC2">
+                                        <button class="catalog-menu-back">
+                                            <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 16H8" stroke="#fff" stroke-width="2" stroke-linecap="round"></path><path d="M8.707 16.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 1 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#fff"></path><path d="M13.293 22.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 0 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#fff"></path></svg>
+                                        </button>
+                                        <div class="catalog-menu__subheader-wrap">
+                                            <p class="catalog-menu__subheader-title" data-cerberus="mainmenu-title">Ёлки</p>
+                                            <a href="#" class="catalog-menu__subheader-link">
+                                                <span>Смотреть все ёлки</span>
+                                                <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16h16" stroke="#00FFC2" stroke-width="2" stroke-linecap="round"></path><path d="M23.293 16.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 1 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#00FFC2"></path><path d="M18.707 22.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 0 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#00FFC2"></path></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <ul class="catalog-menu__list">
+                                        <li class="catalog-menu__item">
+                                            <a href="#">Купить ёлки - ссылка</a>
+                                        </li>
+                                        <li class="catalog-menu__item" data-hasPanel="true">
+                                            <a href="#">Ёлки хвойные - подменю</a>
+                                            <div class="catalog-menu__panel">
+                                                <div class="catalog-menu__subheader" style="background-color: #80013E; color: #00FFC2">
+                                                    <button class="catalog-menu-back">
+                                                        <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 16H8" stroke="#fff" stroke-width="2" stroke-linecap="round"></path><path d="M8.707 16.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 1 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#fff"></path><path d="M13.293 22.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 0 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#fff"></path></svg>
+                                                    </button>
+                                                    <div class="catalog-menu__subheader-wrap">
+                                                        <p class="catalog-menu__subheader-title" data-cerberus="mainmenu-title">Ёлки хвойные - подменю</p>
+                                                        <a href="#" class="catalog-menu__subheader-link">
+                                                            <span> Смотреть все хвойные ёлки</span>
+                                                            <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16h16" stroke="#00FFC2" stroke-width="2" stroke-linecap="round"></path><path d="M23.293 16.707a1 1 0 0 0 1.414-1.414l-1.414 1.414Zm-4.586-7.414a1 1 0 1 0-1.414 1.414l1.414-1.414Zm6 6-6-6-1.414 1.414 6 6 1.414-1.414Z" fill="#00FFC2"></path><path d="M18.707 22.707a1 1 0 0 1-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 0 1 1.414 1.414l-1.414-1.414Zm-6 6 6-6 1.414 1.414-6 6-1.414-1.414Z" fill="#00FFC2"></path></svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <ul class="catalog-menu__list">
+                                                    <li class="catalog-menu__item">
+                                                        <a href="#">Купить хвойные ёлки - ссылка</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="catalog-menu__item catalog-menu__item--bold">
+                    <a href="#">Наряды для вечеринок</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Мебель</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Текстиль для дома</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Декор</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Премиальный интерьер АМ.РМ</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Женщины</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Мужчины</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Малыши</a>
+                </li>
+            </ul>
+            <div class="catalog-menu-line"></div>
+            <ul class="catalog-menu__list" style="margin-top: 0">
+                <li class="catalog-menu__item">
+                    <a href="#">Мебель</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Текстиль для дома</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Декор</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Премиальный интерьер АМ.РМ</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Женщины</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Мужчины</a>
+                </li>
+                <li class="catalog-menu__item">
+                    <a href="#">Малыши</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<!--Бутстрап скрипты, можно убрать-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<!--Бутстрап скрипты, можно убрать-->
+
+<script src="js/script.js"></script>
+</body>
+</html>
